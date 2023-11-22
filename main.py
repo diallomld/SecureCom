@@ -1,8 +1,10 @@
 import random
-import sympy
+#import sympy
 
 def generer_nombre_premier():
-    return sympy.randprime(100, 1000)
+    #return sympy.randprime(100, 1000)
+
+    pass
 
 def chiffrer_dechiffrer_message():
     # Code pour chiffrer / déchiffrer un message
@@ -34,6 +36,8 @@ def demander_preuve_connaissance():
     pass
 
 def main():
+
+    
     while True:
         print("Bonjour ô maître Rémi ! Que souhaitez vous faire aujourd’hui ?")
         print("->1<- Chiffrer / déchiffrer des messages.")
