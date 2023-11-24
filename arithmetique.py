@@ -63,5 +63,8 @@ def primeGen(nbOctet):
     print("nombre premier trouvé : ",p)
     return p
 
-primeGen(64)
+# test de l'algo
+nOctets = int(input("entrer le nb d'octet "))
+
+primeGen(nOctets)
 

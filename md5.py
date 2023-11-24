@@ -68,3 +68,7 @@ def md5(message):
     result = '{:032x}'.format(int.from_bytes(hashraw.to_bytes(16, byteorder="little"), 'big'))
 
     return (result)
+
+#text = input("Entrez le lexte à hasher ")
+
+#print(md5(text))
