@@ -1,13 +1,13 @@
-import sys
 import random
-import math
 import base64
-import timeit, time
+import time
 #sys.path.append('../')  # Ajoute le chemin du répertoire parent au chemin de recherche des modules
 
 from md5 import *  # Importe les fonctions depuis le fichier md5 du répertoire parent
 
 from utils import clear_screen, bcolors
+
+from sha256 import generate_hash as sha256
 
 def gcd(a, b):
     while b != 0:
@@ -97,6 +97,41 @@ def int_to_bytes(x):
     
     return byte_string
 
+def generer_couple_cle():
+
+    COLORS = bcolors()
+    print("attention (1024bits - 1seconde env.),")
+    print("attention (2048bits - 15 seconde env.),")
+    print("attention (4096bits - 27 seconde env.),")
+    print("attention (8192bits - 9min env.),")
+    print("attention (16384bits - 525.96 seconde env.),")
+    bits = int(input(" entrer le nombre de bits de n : "))
+    
+    start_time1 = time.time()
+
+    # Générer deux nombres premiers aléatoires
+    p = generate_prime_number(bits // 2)
+    q = generate_prime_number(bits // 2)
+
+    end_time1 = time.time()
+    execution_time1 = end_time1 - start_time1
+
+    minutes = execution_time1/2
+
+    print(f" {COLORS[0]} Temps d'exécution pour les deux premiers: {minutes} secondes {COLORS[3]}")
+
+    start_time2 = time.time()
+
+    # Générer la paire de clés
+    public_key, private_key = generate_keypair(p, q)
+
+    end_time2 = time.time()
+    execution_time2 = end_time2 - start_time2
+
+    print("public_key (e,n) ", public_key, "\n\n")
+    print("private_key (d,n)", private_key, "\n\n")
+
+    print(f"{COLORS[0]} Temps d'exécution pub key et private key: {round(execution_time2,2)} secondes {COLORS[3]} ")
 
 if __name__ == "__main__":
     
@@ -141,6 +176,7 @@ if __name__ == "__main__":
     encrypted_base64 = base64.b64encode(encrypted_bytes).decode('utf-8')
     print("Texte chifré (Base64):", encrypted_base64)
     print("Hash du chifré (md5):", md5(encrypted_base64))
+    print("Hash du chifré (sha256):", sha256(message).hex())
 
     end_time3 = time.time()
     execution_time3 = end_time3 - start_time3

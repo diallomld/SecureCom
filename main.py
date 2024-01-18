@@ -1,5 +1,17 @@
-import random
-#import sympy
+from utils import clear_screen, bcolors
+
+# import des fichiers
+
+import rsa as rsa
+import Guillou as gq
+import CA as CA
+
+from blockchain import nft
+
+from symmetric.serpent import serpent
+from symmetric.hkdf import store_kdf_chain_and_list
+
+
 
 def generer_nombre_premier():
     #return sympy.randprime(100, 1000)
@@ -8,32 +20,30 @@ def generer_nombre_premier():
 
 def chiffrer_dechiffrer_message():
     # Code pour chiffrer / déchiffrer un message
-    pass
+    serpent.menu()
 
 def generer_couple_cle():
-    nombre_premier = generer_nombre_premier()
-    # Code pour générer un couple de clé publique / privée
-    pass
+    return rsa.generer_couple_cle()
 
-def signer_certificat():
+def generer_signer_certificat():
     # Code pour signer un certificat
-    pass
+    CA.genarateCertifAndSign()
 
 def verifier_certificat():
     # Code pour vérifier un certificat
-    pass
+    CA.CheckCertif()
 
 def enregistrer_document_coffre_fort():
     # Code pour enregistrer un document dans le coffre fort
-    pass
+    nft.main()
 
 def envoyer_message_asynchrone():
     # Code pour envoyer un message de manière asynchrone
-    pass
+    store_kdf_chain_and_list()
 
 def demander_preuve_connaissance():
     # Code pour demander une preuve de connaissance
-    pass
+    gq.main()
 
 def main():
 
@@ -42,7 +52,7 @@ def main():
         print("Bonjour ô maître Rémi ! Que souhaitez vous faire aujourd’hui ?")
         print("->1<- Chiffrer / déchiffrer des messages.")
         print("->2<- Créer un couple de clé publique / privée.")
-        print("->3<- Signer un certificat.")
+        print("->3<- Signer /Generer un certificat.")
         print("->4<- Vérifier un certificat.")
         print("->5<- Enregistrer un document dans le coffre fort.")
         print("->6<- Envoyer un message (asynchrone).")
@@ -56,7 +66,7 @@ def main():
         elif choix == "2":
             generer_couple_cle()
         elif choix == "3":
-            signer_certificat()
+            generer_signer_certificat()
         elif choix == "4":
             verifier_certificat()
         elif choix == "5":
