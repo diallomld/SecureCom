@@ -9,14 +9,9 @@ import CA as CA
 from blockchain import nft
 
 from symmetric.serpent import serpent
-from symmetric.hkdf import store_kdf_chain_and_list
+from symmetric import hkdf
 
 
-
-def generer_nombre_premier():
-    #return sympy.randprime(100, 1000)
-
-    pass
 
 def chiffrer_dechiffrer_message():
     # Code pour chiffrer / déchiffrer un message
@@ -39,7 +34,11 @@ def enregistrer_document_coffre_fort():
 
 def envoyer_message_asynchrone():
     # Code pour envoyer un message de manière asynchrone
-    store_kdf_chain_and_list()
+    hkdf.store_kdf_chain_and_list()
+
+    # ici pour gerer l'asynchrone// parcourir keys.txt
+    # recuperer la clé pour chaque message à envoyer, apre suprimer ligne 
+    # correspondant à la clé utilise cle utiliser dans 
 
 def demander_preuve_connaissance():
     # Code pour demander une preuve de connaissance

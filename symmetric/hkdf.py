@@ -1,6 +1,6 @@
 
 import os
-from key_exchange import getSharedKey  # Import de la fonction getSharedKey depuis key_exhange.py
+from . import key_exchange as sharedKey
 import sha256
 
 chemin_repertoire_script = os.path.dirname(os.path.abspath(__file__))
@@ -56,12 +56,6 @@ def custom_kdf(secret_key, num_keys=5):
     return derived_kdf_keys
 
 #Clé principale à dériver
-master_key = getSharedKey()
-
-# Génère 5 clés dérivées avec la fonction KDF personnalisée basée sur HMAC
-num_keys = int(input("Entrer le nombre de message "))
-
-resultat_kdf = custom_kdf(master_key, num_keys)
 
 chemin = os.path.join(chemin_repertoire_script, 'cles_ephemere')  # Utilisez os.path.join pour créer le chemin correct
 
@@ -79,7 +73,7 @@ def getLatestIndexFile():
 
 
 def store_kdf_chain_and_list():
-    master_key = getSharedKey()
+    master_key = sharedKey.getSharedKey()
     num_keys = int(input("Entrer le nombre de message "))
     resultat_kdf = custom_kdf(master_key, num_keys)
     chemin_repertoire_script = os.path.dirname(os.path.abspath(__file__))

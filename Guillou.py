@@ -69,9 +69,7 @@ def main():
     X = pow(x,e,N) 
 
     y = random.randint(1,phi) 
-    Y = pow(y,e,N) 
-    print(N,x)
-    print(N,y)
+    Y = pow(y,e,N)
 
     if (pgcd(x,N)>1):
         print("Attention x ne doit pas etre un facteur de N")

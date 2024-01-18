@@ -2,7 +2,7 @@ import sys
 import re
 import random
 
-import constants as constants_values
+from . import constants as constants_values
 
 def key_gen(size=32):
     key = ''

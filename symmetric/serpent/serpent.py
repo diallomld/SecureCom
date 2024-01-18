@@ -1,10 +1,16 @@
-# import helper as help_functions
-# import constants as constants_values
-
-import helper as help_functions
-
-import constants as constants_values
+from . import constants as constants_values 
+from . import helper as help_functions
 import base64
+import os, sys
+
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Get the parent directory by going one level up
+parent_dir = os.path.dirname(current_dir)
+# Add the parent directory to sys.path
+sys.path.append(parent_dir)
+
+from utils import bcolors
 
 
 class serpant:
@@ -172,7 +178,7 @@ def menu():
 
             COLORS = bcolors()
 
-            print(f" {COLORS[0]} Chiffré en base64: {base64_encode} {COLORS[0]}")
+            print(f" {COLORS[0]} Chiffré en base64: {base64_encode} {COLORS[3]}")
 
         elif choix == "2":
             cipherbase = input("Entrer le texte chiffré en base64: ")
@@ -182,7 +188,7 @@ def menu():
 
             dec = decrypt(base64_2_bits, help_functions.convertToBitstring(inputKeysDecrypt, 256))
 
-            print("Déchiffrement réussi avec succès:", bits_to_text(dec))
+            print(f"{COLORS[0]} Déchiffrement réussi avec succès: {bits_to_text(dec)} {COLORS[3]} ")
 
         elif choix == "3":
             print("Au revoir!")
@@ -190,6 +196,3 @@ def menu():
 
         else:
             print("Choix non valide. Veuillez entrer 1, 2 ou 3.")
-
-if __name__ == "__main__":
-    menu()
