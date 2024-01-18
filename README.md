@@ -4,10 +4,17 @@ Description brève du projet.
 
 ## Table des matières
 
+- [Description](#Description)
 - [Utilisation](#utilisation)
+- [Difficulter rencontré ](#Difficulté)
 - [Contribuer](#contribuer)
 - [Licence](#licence)
 - [Installation](#installation)
+
+
+## Description
+
+
 
 ## Utilisation
 
