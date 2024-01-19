@@ -9,6 +9,8 @@ from utils import clear_screen, bcolors
 
 from sha256 import generate_hash as sha256
 
+from randomBytes import randombytes
+
 def gcd(a, b):
     while b != 0:
         a, b = b, a % b
